@@ -58,17 +58,21 @@
 	<button class="tablink" onClick="openPage('LinkPage', this)">Links</button>
 
 	<div id="Home" class="tabcontent">
-		<h1><span style="color:#800080">Hey there!</span></h1>
-		<p style="color:#DDD">I have nothing to show here, yet.</p>
-		<marquee direction="right" width=250px; style="color:#DDD">weeee</marquee>
+		<iframe src=https://register.vote.org/?partner=111111&campaign=free-tools" width="100%" marginheight="0" frameborder="0" id="frame1" scrollable ="no"></iframe>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.3/iframeResizer.min.js"></script>
+		<script type="text/javascript">
+			iFrameResize({ log:true, checkOrigin:false});
+		</script>
 	</div>
 
 	<div id="ROBLOX" class="tabcontent">
 		<h1><span class="title">Hey there</span></h1>
 		<br>
 		<a href="https://www.roblox.com/users/54346951/profile">my profile</a>
-		<br>
+		<br><br>
 		<p>ima use this to showcase my projects</p>
+		<p style="color:#DDD">I have nothing else to show here, yet.</p>
+		<marquee direction="right" width=250px; style="color:#DDD">weeee</marquee>
 	</div>
 
 	<div id="LinkPage" class="tabcontent">
@@ -82,7 +86,12 @@
 		  for (i = 0; i < tabcontent.length; i++) {
 			tabcontent[i].style.display = "none";
 		  }
+		  tablinks = document.getElementsByClassName("tablink")
+		  for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].body.style.backgroundColor = "";
+		  }
 		  document.getElementById(pageName).style.display = "block";
+		  elmnt.style.backgroundColor = "#111"
 		}
 		// Get the element with id="defaultOpen" and click on it
 		document.getElementById("defaultOpen").click();
