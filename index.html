@@ -58,11 +58,7 @@
 	<button class="tablink" onClick="openPage('LinkPage', this)">Links</button>
 
 	<div id="Home" class="tabcontent">
-		<iframe src=https://register.vote.org/?partner=111111&campaign=free-tools" width="100%" marginheight="0" frameborder="0" id="frame1" scrollable ="no"></iframe>
-		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.3/iframeResizer.min.js"></script>
-		<script type="text/javascript">
-			iFrameResize({ log:true, checkOrigin:false});
-		</script>
+		<p>hi</p>
 	</div>
 
 	<div id="ROBLOX" class="tabcontent">
@@ -85,13 +81,7 @@
 		  tabcontent = document.getElementsByClassName("tabcontent");
 		  for (i = 0; i < tabcontent.length; i++) {
 			tabcontent[i].style.display = "none";
-		  }/*
-		  tablinks = document.getElementsByClassName("tablink")
-		  for (i = 0; i < tablinks.length; i++) {
-			tablinks[i].body.style.backgroundColor = "";
 		  }
-		  document.getElementById(pageName).style.display = "block";
-		  elmnt.style.backgroundColor = "#111" */
 		}
 		// Get the element with id="defaultOpen" and click on it
 		document.getElementById("defaultOpen").click();
