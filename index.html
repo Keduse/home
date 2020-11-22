@@ -49,30 +49,34 @@
 		background-color: #111;
 	}
 	
+	a:link, a:hover, a:visited {color:#7F7FFF}
+	a:active {color: #3535ff}
+
 	</style>
 </head>
 
 <body>
 	<button class="tablink" onclick="openPage('Home', this)" id="defaultOpen">Home</button>
-	<button class="tablink" onclick="openPage('ROBLOX', this)">ROBLOX</button>
+	<button class="tablink" onclick="openPage('ro-stuff', this)">ROBLOX</button>
 	<button class="tablink" onClick="openPage('LinkPage', this)">Links</button>
 
 	<div id="Home" class="tabcontent">
-		<p>hi</p>
+		<p>hii</p>
 	</div>
 
-	<div id="ROBLOX" class="tabcontent">
+	<div id="ro-stuff" class="tabcontent">
 		<h1><span class="title">Hey there</span></h1>
 		<br>
 		<a href="https://www.roblox.com/users/54346951/profile">my profile</a>
 		<br><br>
-		<p>ima use this to showcase my projects</p>
-		<p style="color:#DDD">I have nothing else to show here, yet.</p>
-		<marquee direction="right" width=250px; style="color:#DDD">weeee</marquee>
+		<p><b>ima use this to showcase my projects</b></p>
+		<p>I have nothing else to show here, yet.</p>
+		<marquee direction="right" width=250px>weeee</marquee>
 	</div>
 
-	<div id="LinkPage" class="tabcontent">
-		<p>will be appending links here later</p>
+	<div id="LinkPage" class="tabcontent" style="width: 35%">
+		<button onclick="refreshLinks()">Refresh</button>
+		<br><br>
 	</div>
 
 	<script>
@@ -86,7 +90,48 @@
 		}
 		// Get the element with id="defaultOpen" and click on it
 		document.getElementById("defaultOpen").click();
+
+		function createAndShowEmbed(id, url) {
+			console.log(id)
+			console.log(url)
+		}
+
+		function hideEmbed(id) {
+			console.log(id)
+		}
+
+		function refreshLinks() {
+			let url = 'https://raw.githubusercontent.com/2020PB/police-brutality/data_build/all-locations.json';
+
+			fetch(url)
+			.then(res => res.json())
+			.then((out) => { // out = json table
+				var page = document.getElementById('LinkPage')
+				var element = document.createElement('div')
+				element.id = "data"
+				var htmlData = ""
+				for (i = 0; i < out.data.length; i++) {
+					var id = out.data[i].id
+					var url = out.data[i].links[0]
+					htmlData = htmlData + "<a id='linkInList' href='" + url + "'>" + out.data[i].name + "<br><br>"
+				}
+				element.innerHTML = htmlData
+				page.appendChild(element)
+
+				var dataDiv = document.querySelector("#data").children
+				for (i = 0; i < dataDiv.length; i++) {
+					dataDiv[i].addEventListener("mouseenter", function(event) {
+						console.log("mouse enter!")
+					}, false)
+					dataDiv[i].addEventListener("mouseout", function(event) {
+						console.log("mouse out!")
+					}, false)
+				}
+			})
+			.catch(err => { throw err });
+		}
 	</script>
+	<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
 </body>
 
 </html>
